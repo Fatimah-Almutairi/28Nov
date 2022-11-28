@@ -9,6 +9,4 @@ router.post ('/', validate (addLoanSchema), addNewLoan);
 router.get ('/', getLoans);
 
 
-
-
 export default router;
