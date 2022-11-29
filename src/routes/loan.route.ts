@@ -1,7 +1,7 @@
 import express from 'express'
 import { addNewLoan, getLoans, loanBook } from '../controller/loan.controller';
 import validate from '../middleware/validate';
-import { addLoanSchema } from '../zod.schema/schemas';
+import { addLoanSchema } from '../zod.schema/auth.schema';
 
 const router = express.Router();
 

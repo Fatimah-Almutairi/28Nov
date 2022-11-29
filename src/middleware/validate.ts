@@ -1,5 +1,5 @@
-import { NextFunction, Request , RequestHandler, Response } from "express";
-import { AnyZodObject, Schema, ZodError } from "zod";
+import { NextFunction, Request , Response } from "express";
+import { AnyZodObject, ZodError } from "zod";
 
 const validate = (Schema: AnyZodObject) => 
 (req: Request, res: Response, next: NextFunction) => {

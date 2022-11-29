@@ -1,12 +1,12 @@
 import express from 'express'
-import { addNewUser, getUsers } from '../controller/user.controller';
+import { loginHandler, registerHandler } from '../controller/user.controller';
 import validate from '../middleware/validate';
-import { addUserSchema } from '../zod.schema/schemas';
+import { loginSchema, registerSchema } from '../zod.schema/auth.schema';
 
 const router = express.Router();
 
-router.post ('/', validate (addUserSchema), addNewUser);
-router.get ('/', getUsers);
+router.post ('/login', validate (loginSchema), loginHandler);
+router.post ('/register', validate(registerSchema), registerHandler);
 
 
 

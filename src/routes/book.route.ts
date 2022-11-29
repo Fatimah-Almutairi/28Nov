@@ -1,7 +1,7 @@
 import express from 'express'
 import { addNewBook,  getBooks} from '../controller/book.controller';
 import validate from '../middleware/validate';
-import { addBookSchema } from '../zod.schema/schemas';
+import { addBookSchema } from '../zod.schema/auth.schema';
 
 const router = express.Router();
 

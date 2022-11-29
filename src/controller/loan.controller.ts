@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {  Loan } from '@prisma/client';
 import { prisma } from '../config/db';
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
-import { paramstype } from "../zod.schema/schemas";
+import { paramstype } from "../zod.schema/auth.schema";
 
 export const addNewLoan = async (req: Request, res: Response) => {
     try{
