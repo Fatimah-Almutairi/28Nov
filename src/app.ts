@@ -13,5 +13,5 @@ app.use('/api/v1/user', userRoute);
 
 
 app.listen(5000, () => {
-    console.log("Server i running on port 5000")
+    console.log("Server running on port 5000")
 })

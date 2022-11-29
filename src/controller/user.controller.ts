@@ -16,7 +16,6 @@ export const registerHandler = async (req: Request, res: Response) => {
             message: "Welcome to the website "
         });
     }catch (error) {
-        console.log(error)
         const prismaError = error as PrismaClientKnownRequestError;
         res.status(400).json({
           message: prismaError.message,
