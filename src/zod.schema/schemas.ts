@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import {TypeOf, z} from 'zod';
 
 export const addUserSchema = z.object ({
     body: z.object({
@@ -22,3 +22,11 @@ export const addLoanSchema = z.object({
         book_id: z.string()
     }),
 });
+
+export const loanBookSchema = z.object ({
+    params: z.object ({
+        user_id: z.string()
+    })
+});
+
+export type paramstype = z.infer<typeof loanBookSchema> ['params']

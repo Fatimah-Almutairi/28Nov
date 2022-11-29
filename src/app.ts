@@ -6,7 +6,7 @@ import { connectDB } from "./config/db";
 
 const app = express();
 //config
-
+connectDB();
 
 //midlleware
 app.use(express.json());

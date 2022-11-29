@@ -11,16 +11,21 @@ model Users {
   id String  @id @default(uuid())
   username String 
   password  String
+  loan Loan []
 }
 
 model Book {
   id String @id @default(uuid())
   name String
   genre String
+  loan Loan []
 }
 
 model Loan {
   id String @id @default(uuid())
   user_id String
   book_id String 
+  userid Users @relation(fields: [user_id], references: [id])
+  bookid Book @relation(fields: [book_id], references: [id])
+
 }
