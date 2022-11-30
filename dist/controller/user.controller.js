@@ -32,9 +32,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginHandler = exports.registerHandler = void 0;
+exports.admin = exports.user = exports.getAllUser = exports.loginHandler = exports.registerHandler = void 0;
 const db_1 = require("../config/db");
 const argon2 = __importStar(require("argon2"));
+const jwt = __importStar(require("jsonwebtoken"));
 const registerHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newUser = req.body;
@@ -48,11 +49,10 @@ const registerHandler = (req, res) => __awaiter(void 0, void 0, void 0, function
         });
     }
     catch (error) {
-        console.log(error);
-        // const prismaError = error as PrismaClientKnownRequestError;
-        // res.status(400).json({
-        //   message: prismaError.message,
-        // });
+        const prismaError = error;
+        res.status(400).json({
+            message: prismaError.message,
+        });
     }
 });
 exports.registerHandler = registerHandler;
@@ -72,8 +72,31 @@ const loginHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             message: "Wrong Username or Password"
         });
     }
+    const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET);
     return res.status(200).json({
         message: "Welcome Back.."
     });
 });
 exports.loginHandler = loginHandler;
+const getAllUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield db_1.prisma.users.findMany();
+        return res.status(200).json(user);
+    }
+    catch (error) {
+        console.log(error);
+        const prismaError = error;
+        res.status(400).json({
+            message: prismaError.message,
+        });
+    }
+});
+exports.getAllUser = getAllUser;
+const user = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.status(200).json({ message: "Welcome USER .." });
+});
+exports.user = user;
+const admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.status(200).json({ message: "Welcome ADMIN .." });
+});
+exports.admin = admin;

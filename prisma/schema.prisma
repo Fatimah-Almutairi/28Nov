@@ -13,8 +13,13 @@ model Users {
   username  String  @unique
   password  String
   email     String   @unique
+  role     role    @default(USER)
 }
 
+enum role {
+USER 
+ADMID
+}
 model Student {
   id String @id @default(uuid())
   name String 

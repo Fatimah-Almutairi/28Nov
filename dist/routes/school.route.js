@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const school_controller_1 = require("../controller/school.controller");
+const validate_1 = __importDefault(require("../middleware/validate"));
+const school_schema_1 = require("../zod.schema/school.schema");
+const router = express_1.default.Router();
+router.get('/student', school_controller_1.getStudents);
+router.post('/student', (0, validate_1.default)(school_schema_1.studentSchema), school_controller_1.addStudent);
+router.get('/student/:id', (0, validate_1.default)(school_schema_1.studentSchema), school_controller_1.getStudentId);
+router.get('/classroom', school_controller_1.getClassroom);
+router.post('/classroom', (0, validate_1.default)(school_schema_1.classroomSchema), school_controller_1.addClassroom);
+router.get('/classroom/:id', (0, validate_1.default)(school_schema_1.classroomSchema), school_controller_1.getClassroomId);
+router.post('/teacher', school_controller_1.getTeachers);
+router.post('/teacher', (0, validate_1.default)(school_schema_1.teacherSchema), school_controller_1.addTeacher);
+router.post('/teacher/:id', (0, validate_1.default)(school_schema_1.teacherSchema), school_controller_1.getTeacherId);
+exports.default = router;
