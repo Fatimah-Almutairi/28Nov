@@ -17,6 +17,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "generate": "^0.14.0",
+    "jsonwebtoken": "^8.5.1",
     "zod": "^3.19.1"
   },
   "devDependencies": {

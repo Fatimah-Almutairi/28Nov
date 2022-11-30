@@ -13,10 +13,10 @@ model Users {
   username  String  @unique
   password  String
   email     String   @unique
-  role     role    @default(USER)
+  role     Role    @default(USER)
 }
 
-enum role {
+enum Role {
 USER 
 ADMID
 }

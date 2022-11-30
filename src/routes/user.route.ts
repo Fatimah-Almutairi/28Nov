@@ -9,11 +9,8 @@ const router = express.Router();
 router.post ('/login', validate (loginSchema), loginHandler);
 router.post ('/register', validate(registerSchema), registerHandler);
 router.get('/',protect, getAllUser);
-router.get('/admin',protect,authorized, admin);
-router.get('/user',protect,authorized, user);
-
-
-
+router.get('/admin',protect,authorized ('ADMIN'), admin);
+router.get('/user',protect,authorized ('USER'), user);
 
 
 export default router;

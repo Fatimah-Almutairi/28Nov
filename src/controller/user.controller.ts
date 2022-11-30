@@ -46,6 +46,7 @@ export const loginHandler = async (req: Request, res: Response) => {
         {id: user.id, role: user.role},
         process.env.JWT_SECRET as string
     );
+    console.log(token)
 
     return res.status(200).json({
         message: "Welcome Back..",
