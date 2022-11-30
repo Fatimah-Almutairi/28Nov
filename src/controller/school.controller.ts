@@ -49,6 +49,20 @@ export const getStudentId = async (req: Request, res: Response) => {
     }
 };
 
+export const studentId = async (req: Request, res: Response) => {
+  
+  const {id} = req.params as studentSchemaType;
+  const std = await prisma.student.findUnique({
+    where: {id}
+  });
+  if(!std) {
+    return res.status(400).json({
+      message: "Wrong ID"
+    });
+  }
+  return res.status(200).json(std)
+};
+
 // ClassRoom
 
 export const getClassroom = async (req: Request, res: Response) => {
@@ -94,6 +108,20 @@ export const getClassroomId = async (req: Request, res: Response) => {
         console.log(error);
         return res.status(500).json({message: "Server Error !"});
     }
+};
+
+export const classroomId = async (req: Request, res: Response) => {
+  
+  const {id} = req.params as studentSchemaType;
+  const cls = await prisma.classroom.findUnique({
+    where: {id}
+  });
+  if(!cls) {
+    return res.status(400).json({
+      message: "Wrong ID"
+    });
+  }
+  return res.status(200).json(cls)
 };
 
 // Teacher 
@@ -144,4 +172,16 @@ export const getTeacherId = async (req: Request, res: Response) => {
     }
 };
 
-
+export const teacherId = async (req: Request, res: Response) => {
+  
+  const {id} = req.params as studentSchemaType;
+  const teach = await prisma.teacher.findUnique({
+    where: {id}
+  });
+  if(!teach) {
+    return res.status(400).json({
+      message: "Wrong ID"
+    });
+  }
+  return res.status(200).json(teach)
+};
