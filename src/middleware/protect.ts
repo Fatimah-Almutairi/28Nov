@@ -36,4 +36,3 @@ export const authorized = (role:string) => (req: Request, res: Response, next: N
 
 
 
-// export default {protect , authorized}
