@@ -48,10 +48,11 @@ const registerHandler = (req, res) => __awaiter(void 0, void 0, void 0, function
         });
     }
     catch (error) {
-        const prismaError = error;
-        res.status(400).json({
-            message: prismaError.message,
-        });
+        console.log(error);
+        // const prismaError = error as PrismaClientKnownRequestError;
+        // res.status(400).json({
+        //   message: prismaError.message,
+        // });
     }
 });
 exports.registerHandler = registerHandler;
