@@ -6,7 +6,7 @@ interface Iuser {
     role: string;
 }
 
-const protect = (req: Request, res: Response, next: NextFunction) => {
+export const protect = (req: Request, res: Response, next: NextFunction) => {
     try{
         const header = req.headers.authorization;
         if(!header){
@@ -24,7 +24,7 @@ const protect = (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
-const authorized = (role:string) => (req: Request, res: Response, next: NextFunction) => {
+export const authorized = (role:string) => (req: Request, res: Response, next: NextFunction) => {
     const user = res.locals.user as Iuser;
     if(role !== user.role) {
         res.status(403).json({
@@ -36,4 +36,4 @@ const authorized = (role:string) => (req: Request, res: Response, next: NextFunc
 
 
 
-export default {protect , authorized}
+// export default {protect , authorized}
